@@ -13,7 +13,7 @@ export default class SessionLog extends Component {
     }
 
     getSessionLogs() {
-        fetch('http://192.168.1.97:3000/users', { method: "GET" })
+        fetch('http://192.168.1.97:3000/get-log', { method: "GET" })
             .then((response) => {
                 return response.json()
             }).then((session) => {
@@ -30,7 +30,7 @@ export default class SessionLog extends Component {
     }
 
     render() {
-        
+
         return (
             <ScrollView>
                 {this.state.sessions.map((session, i) => {
