@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import SessionLog from './components/sessionLog';
+import AppHeader from './components/appHeader';
 
 
 export default function App() {
 
   return (
-    <SessionLog />
+    <View>
+      <AppHeader />
+      <SessionLog />
+    </View>
   );
 }

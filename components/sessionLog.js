@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Card } from 'react-native-elements';
 import SessionCard from './sessionCard'
 
