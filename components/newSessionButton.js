@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { Button, Icon } from 'react-native-elements';
+import NewSessionModal from './newSessionModal';
+import { View } from 'react-native';
 
 export default class NewSessionButton extends Component {
 
-// Example POST method implementation:
-async postData(url = '', data = {}) {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modalVisible: false
+    }
+  }
+
+  async postData(url = '', data = {}) {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -19,29 +28,48 @@ async postData(url = '', data = {}) {
       referrerPolicy: 'no-referrer', // no-referrer, *client
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
-    return await response.json(); // parses JSON response into native JavaScript objects
+    return await response.text();
   }
 
+  handlePress() {
+    this.setState(
+      { modalVisible: true }
+    )
+  }
 
-handlePress() {
-    this.postData('http://192.168.1.97:3000/insert', { date: '27/06/93', routes: ['V16'] })
-    .then((data) => {
-      console.log(data); // JSON data parsed by `response.json()` call
+  onSubmit = ((session) => {
+    this.setState(
+      { modalVisible: false }
+    )
+    this.logSession(session)
+  })
+
+  logSession(session) {
+    this.postData('http://192.168.1.97:3000/insert', session)
+    .then((response) => {
+      console.log('Session Sent')
+    })
+    .catch((err) => {
+      console.log(err)
     });
-}
+  }
 
-    render() {
-        return (
-            <Button
-            onPress={() => this.handlePress()}
-            icon={
-              <Icon
-                name="add"
-                size={25}
-                color="white"
-              />
-            }
-          />
-        );
-    }
+  render() {
+
+    return (
+      <View>
+        <NewSessionModal isVisible={this.state.modalVisible} onSubmit={this.onSubmit} />
+        <Button
+          onPress={() => this.handlePress()}
+          icon={
+            <Icon
+              name="add"
+              size={25}
+              color="white"
+            />
+          }
+        />
+      </View>
+    );
+  }
 }

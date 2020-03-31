@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Modal } from 'react-native';
 import { Card } from 'react-native-elements';
-import SessionCard from './sessionCard'
+import SessionCard from './sessionCard';
+import NewSessionModal from './newSessionModal';
 
 export default class SessionLog extends Component {
     constructor(props) {
         super(props);
 
         this.state ={
-            sessions: []
+            sessions: [],
+            modalVisible: true
         }
     }
 
@@ -28,6 +30,7 @@ export default class SessionLog extends Component {
     componentDidMount() {
         this.getSessionLogs()
     }
+
 
     render() {
 
