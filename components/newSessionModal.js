@@ -21,7 +21,7 @@ export default class NewSessionModal extends Component {
     })
 
     submitNewSession() {
-        this.props.onSubmit({ date: '27/06/93', routes: this.state.routeLog })
+        this.props.onSubmit({date: new Date().toDateString(), routes: this.state.routeLog })
         this.setState({
             routeLog: []
         })

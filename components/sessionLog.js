@@ -18,20 +18,20 @@ export default class SessionLog extends Component {
     async postData(url = '', data = {}) {
         // Default options are marked with *
         const response = await fetch(url, {
-          method: 'POST', // *GET, POST, PUT, DELETE, etc.
-          mode: 'cors', // no-cors, *cors, same-origin
-          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: 'same-origin', // include, *same-origin, omit
-          headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          redirect: 'follow', // manual, *follow, error
-          referrerPolicy: 'no-referrer', // no-referrer, *client
-          body: JSON.stringify(data) // body data type must match "Content-Type" header
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
         return await response.text();
-      }
+    }
 
     getSessionLogs() {
         fetch('http://192.168.1.97:3000/get-log', { method: "GET" })
@@ -48,18 +48,18 @@ export default class SessionLog extends Component {
 
     logSession(session) {
         this.postData('http://192.168.1.97:3000/insert', session)
-        .then((response) => {
-          console.log('Session Sent')
-        })
-        .catch((err) => {
-          console.log(err)
-        });
-      }
+            .then((response) => {
+                console.log('Session Sent')
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
 
     sessionUpdate = ((session) => {
         let newSessionArray = this.state.sessions.concat(session)
         this.setState(
-            { sessions: newSessionArray}
+            { sessions: newSessionArray }
         )
         this.logSession(session)
     })
@@ -71,16 +71,15 @@ export default class SessionLog extends Component {
     render() {
 
         return (
-            <View>
+            <ScrollView>
                 <AppHeader sessionUpdate={this.sessionUpdate} />
-                <ScrollView>
-                    {this.state.sessions.map((session, i) => {
-                        return (
-                            <SessionCard {...session} key={i} />
-                        );
-                    })}
-                </ScrollView>
-            </View>
+                {this.state.sessions.map((session, i) => {
+                    return (
+                        <SessionCard {...session} key={i} />
+                    );
+                })}
+            </ScrollView>
+
         );
     }
 }
