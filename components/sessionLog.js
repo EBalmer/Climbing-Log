@@ -68,7 +68,6 @@ export default class SessionLog extends Component {
         this.getSessionLogs()
     }
 
-
     render() {
 
         return (

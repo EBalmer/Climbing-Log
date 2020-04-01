@@ -9,7 +9,8 @@ export default class NewSessionButton extends Component {
     super(props);
 
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      routeLog: []
     }
   }
 
@@ -26,11 +27,17 @@ export default class NewSessionButton extends Component {
     this.props.dataFeed(session)
   })
 
+  onCancel = (() => {
+    this.setState(
+      { modalVisible: false }
+    )
+  })
+
   render() {
 
     return (
       <View>
-        <NewSessionModal isVisible={this.state.modalVisible} onSubmit={this.onSubmit} />
+        <NewSessionModal isVisible={this.state.modalVisible} onSubmit={this.onSubmit} onCancel={this.onCancel}/>
         <Button
           onPress={() => this.handlePress()}
           icon={
