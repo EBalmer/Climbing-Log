@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Icon } from 'react-native-elements';
 import NewSessionModal from './newSessionModal';
 import { View } from 'react-native';
+import { test } from '../utils/helpers'
 
 export default class NewSessionButton extends Component {
 
