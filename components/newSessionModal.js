@@ -43,8 +43,8 @@ export default class NewSessionModal extends Component {
                         <GradePicker addRoute={this.addRoute} />
                         <GradesDonutChart 
                         routeLog = {this.state.routeLog}
-                        rad={80}
-                        innerRad={100} />
+                        rad={50}
+                        innerRad={40} />
                     </View>
                     <View style={{
                         flex: 1,

@@ -13,3 +13,15 @@ export function countGrades(routes) {
     summedGradeList = summedGradeList.filter(gradeCount => gradeCount.y !== 0)
     return summedGradeList
 }
+
+export function maxGrade(routes) {
+    max = null
+    grades.forEach(grade => {
+        if(routes.includes(grade)) {
+            max = grade
+            console.log(max)
+        }
+    })
+    console.log('Max Found: ' + max)
+    return max
+}
