@@ -7,9 +7,15 @@ import { Svg } from 'react-native-svg'
 export default class GradesDonutChart extends Component {
 
     render() {
+
         return (
             <Svg viewBox="0 0 100 100">
                 <VictoryPie
+                    style={{
+                        data: {
+                            fill: ({ datum }) => datum.fill
+                        }
+                    }}
                     data={
                         countGrades(this.props.routeLog)
                     }

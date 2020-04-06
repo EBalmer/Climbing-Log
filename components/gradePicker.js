@@ -22,6 +22,13 @@ export default class GradePicker extends Component {
                         <Picker.Item label='V1' value='V1' />
                         <Picker.Item label='V2' value='V2' />
                         <Picker.Item label='V3' value='V3' />
+                        <Picker.Item label='V4' value='V4' />
+                        <Picker.Item label='V5' value='V5' />
+                        <Picker.Item label='V6' value='V6' />
+                        <Picker.Item label='V7' value='V7' />
+                        <Picker.Item label='V8' value='V8' />
+                        <Picker.Item label='V9' value='V9' />
+                        <Picker.Item label='V10' value='V10'/>
                     </Picker>
                     <Button
                         title='Add'
@@ -32,5 +39,3 @@ export default class GradePicker extends Component {
         );
     }
 }
-
-
