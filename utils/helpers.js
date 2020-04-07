@@ -1,7 +1,3 @@
-export function test() {
-    return 'Test Success'
-}
-
 const gradeProps = [
     { grade: 'V1', color: '#a6cee3' },
     { grade: 'V2', color: '#1f78b4' },
@@ -14,7 +10,6 @@ const gradeProps = [
     { grade: 'V9', color: '#cab2d6' },
     { grade: 'V10', color: '#6a3d9a' }]
 
-
 export function countGrades(routes) {
     let summedGradeList = []
     gradeProps.forEach(gradeProp => {
@@ -22,7 +17,6 @@ export function countGrades(routes) {
         summedGradeList.push({ y: temp.length, x: gradeProp.grade, fill: gradeProp.color})
     })
     summedGradeList = summedGradeList.filter(gradeCount => gradeCount.y !== 0)
-    console.log(summedGradeList)
     return summedGradeList
 }
 
